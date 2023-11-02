@@ -48,28 +48,46 @@ function displayAnswers() {
     for (let answerIndex = 0; answerIndex < item.answers.length; answerIndex = answerIndex + 1) // Abkürzung wäre in dem Fall ++
     {
         let button = document.createElement('button');// w
-
         button.textContent = item.answers[answerIndex];// TODO answerIndex
+        button.onclick = function (event) {
+            console.log(currentQuestionIndex);
+            checkAnswer(item, answerIndex);
+            nextQuestion();
+        }
+
 
         document.getElementById('answers').appendChild(button)
     }
 }
-document.getElementById('next-button').onclick = function (event) {
 
-    if (currentQuestionIndex < questions.length) { //Bedingung
+function checkAnswer(item, answerIndex) {
+    if (answerIndex === item.correctAnswer) {
+        result++;
+    }
+}
+
+function nextQuestion() {
+    if (currentQuestionIndex < questions.length - 1) { //Bedingung
         currentQuestionIndex++;
         displayQuestion();
         displayAnswers();
     }
 }
-document.getElementById('previous-button').onclick = function (event) {
-    console.log(event)
+
+function previousQuestion() {
     if (currentQuestionIndex > 0) {
         currentQuestionIndex--;
         displayQuestion();
         displayAnswers();
     }
+}
 
+document.getElementById('next-button').onclick = function (event) {
+    nextQuestion();
+}
+
+document.getElementById('previous-button').onclick = function (event) {
+    previousQuestion();
 }
 
 displayQuestion(); //hiermit rufe ich die funktion auf die ich vorher definiert habe! 
