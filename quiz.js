@@ -52,7 +52,6 @@ function displayAnswers() {
         button.onclick = function (event) {
             console.log(currentQuestionIndex);
             checkAnswer(item, answerIndex);
-            nextQuestion();
         }
 
 
@@ -64,6 +63,10 @@ function checkAnswer(item, answerIndex) {
     if (answerIndex === item.correctAnswer) {
         result++;
     }
+    //ToDo Wenn das Game beendet zeige Result - Container
+    //ToDo Zeige Ergebnis Result Element 
+    //ToDo sonst next Question (else) 
+    nextQuestion();
 }
 
 function nextQuestion() {
@@ -81,7 +84,7 @@ function previousQuestion() {
         displayAnswers();
     }
 }
-
+//ToDo Hier Game Rest Funktion einfügen
 document.getElementById('next-button').onclick = function (event) {
     nextQuestion();
 }
@@ -89,7 +92,7 @@ document.getElementById('next-button').onclick = function (event) {
 document.getElementById('previous-button').onclick = function (event) {
     previousQuestion();
 }
-
+// ToDo Hier onclick funktion für Reset Button einfügen
 displayQuestion(); //hiermit rufe ich die funktion auf die ich vorher definiert habe! 
 displayAnswers();
 
