@@ -11,23 +11,23 @@ let questions = [ //Das ist eine Variable in dieser Variable ist ein Array mit 3
     {
         question: "Wie ist mein Name?", //in einem Objetkt werden die Eigenschaften mit einem : zugewiesen!
         //           0       1        2       3  der Index fängt bei 0 an zu zählen
-        answers: ["Jimmy", "Alex", "Hugo", "Paul"] //Das ist ein Array er enthält 4 Elemente
-        //correctAnswer: 1
+        answers: ["Jimmy", "Alex", "Hugo", "Paul"], //Das ist ein Array er enthält 4 Elemente
+        correctAnswer: 1
     },
     {
         question: "Wie alt ist meine Tochter?", // Die Property ist question!
-        answers: ["3", "4", "2", "5"]
-        //correctAnswer: 2
+        answers: ["3", "4", "2", "5"],
+        correctAnswer: 2
     },
     {
         question: "Wer ist der beste Programierer?",
-        answers: ["James Bond", "Alex", "niemand", "Ich"]
-        //correctAnswer: 3
+        answers: ["James Bond", "Alex", "niemand", "Ich"],
+        correctAnswer: 3
     },
     {
         question: "Wie hoch ist der Brocken im Harz?",
-        answers: ["500m", "1100m", "2200m", "1700m"]
-        //correctAnswer: 1
+        answers: ["500m", "1100m", "2200m", "1700m"],
+        correctAnswer: 1
     },
 ];
 console.log(questions)
@@ -55,12 +55,21 @@ function displayAnswers() {
     }
 }
 document.getElementById('next-button').onclick = function (event) {
-    console.log(event)
+
     if (currentQuestionIndex < questions.length) { //Bedingung
         currentQuestionIndex++;
         displayQuestion();
         displayAnswers();
     }
+}
+document.getElementById('previous-button').onclick = function (event) {
+    console.log(event)
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        displayQuestion();
+        displayAnswers();
+    }
+
 }
 
 displayQuestion(); //hiermit rufe ich die funktion auf die ich vorher definiert habe! 
