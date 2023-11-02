@@ -40,7 +40,10 @@ function displayQuestion() { //hier definiere ich die funktion
     document.getElementById('question').textContent = item.question; //hier hole ich mir das Objekt question(h1 Element) aus der html datei/ mit textcontent sage ich der texinhalt dieses Objekts soll die Frage sein die ich vorher mit question classifiziert habe!
 }
 
+
+
 function displayAnswers() {
+    document.getElementById('answers').innerHTML = ""; //damit clearen wir den container
     let item = questions[currentQuestionIndex]; // Zuweisung
     for (let answerIndex = 0; answerIndex < item.answers.length; answerIndex = answerIndex + 1) // Abkürzung wäre in dem Fall ++
     {
@@ -49,6 +52,14 @@ function displayAnswers() {
         button.textContent = item.answers[answerIndex];// TODO answerIndex
 
         document.getElementById('answers').appendChild(button)
+    }
+}
+document.getElementById('next-button').onclick = function (event) {
+    console.log(event)
+    if (currentQuestionIndex < questions.length) { //Bedingung
+        currentQuestionIndex++;
+        displayQuestion();
+        displayAnswers();
     }
 }
 
