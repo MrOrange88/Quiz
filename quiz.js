@@ -36,11 +36,24 @@ console.log(questions)
 // Richtige Antworten
 
 function displayQuestion() { //hier definiere ich die funktion
-    let question = questions[currentQuestionIndex]; //hiermit sage ich das er mit der ersten Frage anfangen soll(die erste Frage liegt auf Index 0 habe ich oben bestimmt)
-    document.getElementById('question').textContent = question.question; //hier hole ich mir das Objekt question(h1 Element) aus der html datei/ mit textcontent sage ich der texinhalt dieses Objekts soll die Frage sein die ich vorher mit question classifiziert habe!
+    let item = questions[currentQuestionIndex]; //hiermit sage ich das er mit der ersten Frage anfangen soll(die erste Frage liegt auf Index 0 habe ich oben bestimmt)
+    document.getElementById('question').textContent = item.question; //hier hole ich mir das Objekt question(h1 Element) aus der html datei/ mit textcontent sage ich der texinhalt dieses Objekts soll die Frage sein die ich vorher mit question classifiziert habe!
+}
+
+function displayAnswers() {
+    let item = questions[currentQuestionIndex]; // Zuweisung
+    for (let answerIndex = 0; answerIndex < item.answers.length; answerIndex = answerIndex + 1) // Abkürzung wäre in dem Fall ++
+    {
+        let button = document.createElement('button');// w
+
+        button.textContent = item.answers[answerIndex];// TODO answerIndex
+
+        document.getElementById('answers').appendChild(button)
+    }
 }
 
 displayQuestion(); //hiermit rufe ich die funktion auf die ich vorher definiert habe! 
+displayAnswers();
 
 
 
