@@ -35,9 +35,19 @@ console.log(questions)
 // Mögliche Antworten
 // Richtige Antworten
 
-function displayQuestion() { //hier definiere ich die funktion
+function displayQuestion() {
+
+
     let item = questions[currentQuestionIndex]; //hiermit sage ich das er mit der ersten Frage anfangen soll(die erste Frage liegt auf Index 0 habe ich oben bestimmt)
     document.getElementById('question').textContent = item.question; //hier hole ich mir das Objekt question(h1 Element) aus der html datei/ mit textcontent sage ich der texinhalt dieses Objekts soll die Frage sein die ich vorher mit question classifiziert habe!
+
+
+    if (currentQuestionIndex >= questions.length) {
+        document.getElementById('quiz-container').hidden = true;
+        document.getElementById('result-container').hidden = false;
+        document.getElementById('result').textContent = result;
+
+    }
 }
 
 
@@ -48,9 +58,10 @@ function displayAnswers() {
     for (let answerIndex = 0; answerIndex < item.answers.length; answerIndex = answerIndex + 1) // Abkürzung wäre in dem Fall ++
     {
         let button = document.createElement('button');// w
+        button.classList.add("btn", "btn-dark", "me-2");
         button.textContent = item.answers[answerIndex];// TODO answerIndex
         button.onclick = function (event) {
-            console.log(currentQuestionIndex);
+
             checkAnswer(item, answerIndex);
         }
 
@@ -62,7 +73,10 @@ function displayAnswers() {
 function checkAnswer(item, answerIndex) {
     if (answerIndex === item.correctAnswer) {
         result++;
+
+
     }
+
     //ToDo Wenn das Game beendet zeige Result - Container
     //ToDo Zeige Ergebnis Result Element 
     //ToDo sonst next Question (else) 
@@ -84,7 +98,13 @@ function previousQuestion() {
         displayAnswers();
     }
 }
-//ToDo Hier Game Rest Funktion einfügen
+function restart() {
+    if (currentQuestionIndex >= questions.length) {
+        displayQuestion();
+        displayAnswers();
+    }
+}
+//ToDo Hier Game Reset Funktion einfügen
 document.getElementById('next-button').onclick = function (event) {
     nextQuestion();
 }
@@ -92,9 +112,15 @@ document.getElementById('next-button').onclick = function (event) {
 document.getElementById('previous-button').onclick = function (event) {
     previousQuestion();
 }
+
+document.getElementById('restart-button').onclick = function (event) {
+    restart();
+}
 // ToDo Hier onclick funktion für Reset Button einfügen
 displayQuestion(); //hiermit rufe ich die funktion auf die ich vorher definiert habe! 
 displayAnswers();
+
+
 
 
 
