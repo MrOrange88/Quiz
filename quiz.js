@@ -100,6 +100,7 @@ function previousQuestion() {
 }
 function restartGame() {
     currentQuestionIndex = 0;
+    result = 0;
     displayGame();
     displayQuestion();
     displayAnswers();
